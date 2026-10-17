@@ -1,7 +1,7 @@
 
 # Sistema de Ventas – Full Stack
 
-**Universidad de Lima | Ingeniería de Software II | Ciclo 2026-2**
+**Universidad de Lima | Ingeniería de Software II **
 
 Proyecto académico desarrollado para demostrar la aplicación de programación orientada a objetos, principios SOLID, patrones de diseño, arquitectura de software, integración mediante API REST y despliegue con Docker.
 
