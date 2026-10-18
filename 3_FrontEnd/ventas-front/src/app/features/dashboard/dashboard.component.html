@@ -1,0 +1,35 @@
+<section class="page-heading">
+  <div>
+    <p class="eyebrow">Resumen general</p>
+    <h1>Dashboard</h1>
+    <p>Información actual obtenida desde los microservicios.</p>
+  </div>
+</section>
+
+@if (cargando()) {
+  <div class="state-container" role="status">
+    <mat-spinner diameter="44"></mat-spinner>
+    <span>Cargando resumen...</span>
+  </div>
+} @else {
+  <div class="summary-grid">
+    <mat-card appearance="outlined">
+      <mat-card-content>
+        <mat-icon aria-hidden="true">inventory_2</mat-icon>
+        <div><span>Productos</span><strong>{{ resumen().productos }}</strong></div>
+      </mat-card-content>
+    </mat-card>
+    <mat-card appearance="outlined">
+      <mat-card-content>
+        <mat-icon aria-hidden="true">receipt_long</mat-icon>
+        <div><span>Ventas</span><strong>{{ resumen().ventas }}</strong></div>
+      </mat-card-content>
+    </mat-card>
+    <mat-card appearance="outlined">
+      <mat-card-content>
+        <mat-icon aria-hidden="true">payments</mat-icon>
+        <div><span>Pagos</span><strong>{{ resumen().pagos }}</strong></div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+}

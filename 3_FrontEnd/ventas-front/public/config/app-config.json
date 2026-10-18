@@ -1,0 +1,4 @@
+{
+  "ventasApiUrl": "http://localhost:8080/ventas-service/api",
+  "pagosApiUrl": "http://localhost:8080/pagos-service/api"
+}

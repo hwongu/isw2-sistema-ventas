@@ -1,0 +1,11 @@
+COPIA AQUÍ LOS WAR GENERADOS POR MAVEN.
+
+La carpeta debe quedar:
+
+wars/
+├── ventas-service.war
+└── pagos-service.war
+
+Ejemplo:
+ventas-service/target/ventas-service.war -> wars/ventas-service.war
+pagos-service/target/pagos-service.war   -> wars/pagos-service.war

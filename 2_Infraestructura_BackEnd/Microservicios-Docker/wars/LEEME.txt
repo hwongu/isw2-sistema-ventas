@@ -1,0 +1,14 @@
+COPIAR AQUI LOS DOS WAR GENERADOS POR MAVEN
+
+Los nombres deben ser exactamente:
+
+ventas-service.war
+pagos-service.war
+
+Ejemplo:
+
+ventas-service/target/ventas-service.war
+    -> copiar como wars/ventas-service.war
+
+pagos-service/target/pagos-service.war
+    -> copiar como wars/pagos-service.war

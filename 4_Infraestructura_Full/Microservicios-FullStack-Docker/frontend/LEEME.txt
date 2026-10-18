@@ -1,0 +1,25 @@
+COPIA AQUÍ EL CONTENIDO DEL BUILD DE ANGULAR.
+
+En el proyecto Angular ejecuta:
+
+    ng build
+
+Si la salida es:
+
+    dist/ventas-front/browser/
+
+copia EL CONTENIDO de browser/ dentro de esta carpeta frontend/.
+
+Debe quedar algo parecido a:
+
+frontend/
+├── index.html
+├── main-XXXXXXXX.js
+├── styles-XXXXXXXX.css
+├── chunk-XXXXXXXX.js
+├── favicon.ico
+└── ...
+
+IMPORTANTE:
+No copies la carpeta browser como subcarpeta.
+Copia sus archivos directamente dentro de frontend/.

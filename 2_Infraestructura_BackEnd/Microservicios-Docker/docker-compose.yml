@@ -1,0 +1,73 @@
+services:
+
+  postgres-ventas:
+    image: postgres:18.6
+    container_name: postgres-ventas
+    restart: unless-stopped
+
+    environment:
+      POSTGRES_DB: ventasdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: clave
+
+    ports:
+      - "5434:5432"
+
+    volumes:
+      - postgres_ventas_data:/var/lib/postgresql
+      - ./ventas/init:/docker-entrypoint-initdb.d:ro
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d ventasdb"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+
+  postgres-pagos:
+    image: postgres:18.6
+    container_name: postgres-pagos
+    restart: unless-stopped
+
+    environment:
+      POSTGRES_DB: pagosdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: clave
+
+    ports:
+      - "5435:5432"
+
+    volumes:
+      - postgres_pagos_data:/var/lib/postgresql
+      - ./pagos/init:/docker-entrypoint-initdb.d:ro
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d pagosdb"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+
+  tomcat:
+    image: tomcat:11.0.27-jdk25-temurin
+    container_name: tomcat-microservicios
+    restart: unless-stopped
+
+    depends_on:
+      postgres-ventas:
+        condition: service_healthy
+
+      postgres-pagos:
+        condition: service_healthy
+
+    ports:
+      - "8080:8080"
+
+    volumes:
+      - ./wars/ventas-service.war:/usr/local/tomcat/webapps/ventas-service.war:ro
+      - ./wars/pagos-service.war:/usr/local/tomcat/webapps/pagos-service.war:ro
+
+
+volumes:
+  postgres_ventas_data:
+  postgres_pagos_data:

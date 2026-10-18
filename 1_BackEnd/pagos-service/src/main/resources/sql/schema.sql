@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS pago (
+    id BIGSERIAL PRIMARY KEY,
+    venta_id BIGINT NOT NULL,
+    fecha TIMESTAMP NOT NULL,
+    monto NUMERIC(12,2) NOT NULL,
+    metodo_pago VARCHAR(30) NOT NULL,
+    estado VARCHAR(30) NOT NULL,
+    codigo_operacion VARCHAR(50) UNIQUE NOT NULL
+);

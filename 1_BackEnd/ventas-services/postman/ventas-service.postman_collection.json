@@ -1,0 +1,219 @@
+{
+  "info": {
+    "_postman_id": "0b44fa87-8f96-41fd-a47d-4292681e5d40",
+    "name": "ventas-service API",
+    "description": "Guía de pruebas para Postman del microservicio `ventas-service`.\n\n## Cómo usar esta colección\n1. Importa este archivo en Postman.\n2. Define la variable `baseUrl` (por defecto: `http://localhost:8080/ventas-service`).\n3. Ejecuta primero `Productos > Crear producto` para tener datos de prueba.\n4. Usa `productoId` y `ventaId` para pruebas por id.\n\n## Variables incluidas\n- `baseUrl`: URL base del servicio.\n- `productoId`: id de producto para GET/PUT/DELETE por id.\n- `ventaId`: id de venta para GET por id.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080/ventas-service"
+    },
+    {
+      "key": "productoId",
+      "value": "1"
+    },
+    {
+      "key": "ventaId",
+      "value": "1"
+    }
+  ],
+  "item": [
+    {
+      "name": "Productos",
+      "description": "Endpoints de productos (`/api/productos`).",
+      "item": [
+        {
+          "name": "Listar productos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/productos",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "productos"
+              ]
+            },
+            "description": "Devuelve todos los productos."
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener producto por id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/productos/{{productoId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "productos",
+                "{{productoId}}"
+              ]
+            },
+            "description": "Devuelve un producto por id."
+          },
+          "response": []
+        },
+        {
+          "name": "Crear producto",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"codigo\": \"P001\",\n  \"nombre\": \"Teclado\",\n  \"precio\": 120.50,\n  \"stock\": 25\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/productos",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "productos"
+              ]
+            },
+            "description": "Crea un producto. Retorna `201 Created`."
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar producto",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"codigo\": \"P001\",\n  \"nombre\": \"Teclado Mecánico\",\n  \"precio\": 150.00,\n  \"stock\": 18\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/productos/{{productoId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "productos",
+                "{{productoId}}"
+              ]
+            },
+            "description": "Actualiza el producto por id."
+          },
+          "response": []
+        },
+        {
+          "name": "Eliminar producto",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/productos/{{productoId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "productos",
+                "{{productoId}}"
+              ]
+            },
+            "description": "Elimina el producto por id. Retorna `204 No Content`."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Ventas",
+      "description": "Endpoints de ventas (`/api/ventas`).",
+      "item": [
+        {
+          "name": "Listar ventas",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/ventas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "ventas"
+              ]
+            },
+            "description": "Devuelve todas las ventas con sus detalles."
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener venta por id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/ventas/{{ventaId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "ventas",
+                "{{ventaId}}"
+              ]
+            },
+            "description": "Devuelve una venta por id."
+          },
+          "response": []
+        },
+        {
+          "name": "Registrar venta",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"detalles\": [\n    {\n      \"productoId\": 1,\n      \"cantidad\": 2\n    },\n    {\n      \"productoId\": 3,\n      \"cantidad\": 1\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/ventas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "ventas"
+              ]
+            },
+            "description": "Registra una venta. Valida stock y procesa pago. Retorna `201 Created`."
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
